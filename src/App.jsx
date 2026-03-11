@@ -46,7 +46,7 @@ export default function App() {
   function toggleDoc(key) { setCheckedDocs(prev => ({ ...prev, [key]: !prev[key] })); }
 
   function copyPix() {
-    navigator.clipboard.writeText("00020126330014BR.GOV.BCB.PIX0111999999999990204IR20520400005303986540529.005802BR5920DeclaraFacil LTDA6009SAO PAULO62140510IR202400016304ABCD").catch(() => {});
+    navigator.clipboard.writeText("05467514660").catch(() => {});
     setPixCopied(true);
     setTimeout(() => setPixCopied(false), 3000);
   }
@@ -446,6 +446,19 @@ export default function App() {
                 style={{ width: "100%", background: "#0D1117", border: "1px solid #2D3748", color: "#F0EDE8", padding: "10px 14px", borderRadius: 10, fontSize: 13, outline: "none", resize: "vertical", fontFamily: "'Georgia', serif", boxSizing: "border-box" }} />
             </div>
 
+            {/* CONTATO */}
+            <div style={{ background: "#F59E0B10", border: "1px solid #F59E0B30", borderRadius: 14, padding: 18, marginBottom: 20 }}>
+              <div style={{ fontSize: 13, color: "#F59E0B", fontWeight: 700, marginBottom: 10 }}>💡 Prefere enviar por outro canal?</div>
+              <div style={{ display: "flex", gap: 10, alignItems: "center", marginBottom: 10 }}>
+                <span style={{ fontSize: 18 }}>📧</span>
+                <a href="mailto:iconsultrh.contato@gmail.com" style={{ fontSize: 13, color: "#D1D5DB", textDecoration: "none" }}>iconsultrh.contato@gmail.com</a>
+              </div>
+              <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+                <span style={{ fontSize: 18 }}>📱</span>
+                <a href="https://wa.me/5531996463657" target="_blank" style={{ fontSize: 13, color: "#25D366", textDecoration: "none", fontWeight: 700 }}>WhatsApp: (031) 9 96463657</a>
+              </div>
+            </div>
+
             <button onClick={() => setStep(4)} style={{ width: "100%", background: "linear-gradient(135deg, #00C896, #00A37A)", border: "none", color: "#0D1117", padding: 16, borderRadius: 12, fontSize: 15, fontWeight: 800, cursor: "pointer" }}>
               Continuar →
             </button>
@@ -477,7 +490,7 @@ export default function App() {
               <div style={{ background: "#0D1117", border: "1px solid #2D3748", borderRadius: 10, padding: 12 }}>
                 <div style={{ fontSize: 11, color: "#6B7280", marginBottom: 4 }}>Chave PIX · Copia e Cola</div>
                 <div style={{ fontSize: 11, color: "#D1D5DB", wordBreak: "break-all", fontFamily: "monospace", marginBottom: 10 }}>
-                  00020126330014BR.GOV.BCB.PIX...IR2024
+                  00020126330014BR.GOV.BCB.PIX... CPF: 054.675.146-60
                 </div>
                 <button onClick={copyPix}
                   style={{ width: "100%", background: pixCopied ? "#00C89620" : "#1E2732", border: `1px solid ${pixCopied ? "#00C896" : "#2D3748"}`, color: pixCopied ? "#00C896" : "#9CA3AF", padding: "8px", borderRadius: 8, cursor: "pointer", fontSize: 13, fontWeight: 600 }}>

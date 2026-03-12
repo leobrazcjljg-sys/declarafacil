@@ -6,7 +6,6 @@ const supabase = createClient(
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNveGtwa3ZyeXBlZ3BwYnBib3lsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMzMDQ0MTksImV4cCI6MjA4ODg4MDQxOX0.IaHzADVuIyjeBpay1TsHund1sOp4HCQ-1P7ZWsibntU"
 );
 
-const ADMIN_PASSWORD = "IconsultRH#2026";
 const BUCKET = "Documentos";
 
 const CHECKLIST = [
@@ -105,11 +104,22 @@ export default function App() {
     setLoading(false);
   }
   function handleLogout() { setCliente(null); localStorage.removeItem("declarafacil_cliente"); setScreen("home"); }
-  function handleAdminLogin() {
-    if (adminPassword === ADMIN_PASSWORD) { setIsAdmin(true); localStorage.setItem("declarafacil_admin", "1"); setAdminErro(""); setScreen("admin"); }
-    else { setAdminErro("Senha incorreta."); }
+  async function handleAdminLogin() {
+    setLoading(true); setAdminErro("");
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: "iconsultrh.contato@gmail.com",
+      password: adminPassword,
+    });
+    if (error || !data.user) {
+      setAdminErro("Senha incorreta. Tente novamente.");
+    } else {
+      setIsAdmin(true);
+      localStorage.setItem("declarafacil_admin", "1");
+      setScreen("admin");
+    }
+    setLoading(false);
   }
-  function handleAdminLogout() { setIsAdmin(false); localStorage.removeItem("declarafacil_admin"); setScreen("home"); }
+  async function handleAdminLogout() { await supabase.auth.signOut(); setIsAdmin(false); localStorage.removeItem("declarafacil_admin"); setScreen("home"); }
 
   async function uploadArquivo(file, declaracaoId, remetente, nomeRemetente) {
     setUploading(true);

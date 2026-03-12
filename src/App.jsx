@@ -19,7 +19,7 @@ const MOCK_MESSAGES = [
 ];
 
 const MOCK_ORDERS = [
-  { id: "IR-2025-001", year: "2025", status: 3, date: "05/03/2026", value: "R$ 290,00", paid: true, messages: MOCK_MESSAGES },
+  { id: "IR-2025-001", year: "2025", status: 3, date: "05/03/2026", value: "R$ 120,00", paid: true, messages: MOCK_MESSAGES },
   { id: "IR-2024-001", year: "2024", status: 4, date: "10/02/2025", value: "R$ 250,00", paid: true, file: true, messages: [] },
 ];
 
@@ -105,8 +105,44 @@ export default function App() {
         <button onClick={() => { setScreen("new"); setStep(1); }} style={{ width: "100%", background: "linear-gradient(135deg, #00C896, #00A37A)", border: "none", color: "#0D1117", padding: "16px", borderRadius: 12, fontSize: 16, fontWeight: 800, cursor: "pointer" }}>
           Iniciar Declaração →
         </button>
-        <div style={{ marginTop: 12, fontSize: 13, color: "#4B5563" }}>A partir de R$ 290,00 · Pagamento via PIX</div>
+        <div style={{ marginTop: 12, fontSize: 13, color: "#4B5563" }}>A partir de R$ 120,00 · Pagamento via PIX</div>
       </div>
+      <div style={{ padding: "0 28px 40px", maxWidth: 520, margin: "0 auto" }}>
+        <div style={{ background: "#161B22", border: "1px solid #21262D", borderRadius: 16, padding: 24, marginBottom: 0 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+            <span style={{ fontSize: 20 }}>📌</span>
+            <div style={{ fontSize: 14, fontWeight: 800, color: "#F0EDE8", textTransform: "uppercase", letterSpacing: 1 }}>Quem deve declarar IR 2026?</div>
+          </div>
+          <div style={{ fontSize: 12, color: "#6B7280", marginBottom: 16 }}>Ano-base 2025 · Prazo estimado: 16 mar a 29 mai de 2026</div>
+          {[
+            ["💰", "Rendimentos tributáveis acima de R$ 33.888,00", "Salários, aposentadoria, pensões, aluguéis recebidos em 2025"],
+            ["🏦", "Rendimentos isentos acima de R$ 200.000,00", "FGTS, indenizações, dividendos ou lucros distribuídos"],
+            ["🏠", "Patrimônio acima de R$ 800.000,00", "Bens e direitos possuídos em 31/12/2025"],
+            ["📈", "Operações na bolsa acima de R$ 40.000,00", "Ações, fundos, day trade ou ganho líquido tributável"],
+            ["💸", "Ganho de capital", "Lucro na venda de imóveis, veículos ou outros bens"],
+            ["🌾", "Atividade rural acima de R$ 153.199,50", "Receita bruta anual ou compensação de prejuízos"],
+          ].map(([ic, title, desc]) => (
+            <div key={title} style={{ display: "flex", gap: 12, alignItems: "flex-start", marginBottom: 12, paddingBottom: 12, borderBottom: "1px solid #21262D" }}>
+              <span style={{ fontSize: 18, flexShrink: 0 }}>{ic}</span>
+              <div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: "#F0EDE8", marginBottom: 2 }}>{title}</div>
+                <div style={{ fontSize: 12, color: "#9CA3AF", lineHeight: 1.5 }}>{desc}</div>
+              </div>
+            </div>
+          ))}
+          <div style={{ background: "#F59E0B10", border: "1px solid #F59E0B30", borderRadius: 10, padding: 14 }}>
+            <div style={{ fontSize: 13, fontWeight: 700, color: "#F59E0B", marginBottom: 8 }}>⚠️ Novidades importantes 2026</div>
+            <div style={{ fontSize: 12, color: "#D1D5DB", lineHeight: 1.8 }}>
+              {"• A isenção para quem ganha até R$ 5.000,00/mês NÃO vale nesta declaração — só valerá em 2027."}<br/>
+              {"• Quem ganhou R$ 5.000,00 em 2025 pagou IR normalmente e precisa declarar."}<br/>
+              {"• PIX recebido como salário, aluguel ou serviço deve ser informado."}<br/>
+              {"• Declaração pré-preenchida disponível para agilizar o processo."}<br/>
+              {"• Multa por atraso: mínimo R$ 165,74 ou até 20% do imposto devido."}
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div style={{ padding: "0 28px 40px", maxWidth: 520, margin: "0 auto" }}>
         <div style={{ background: "#161B22", border: "1px solid #21262D", borderRadius: 16, padding: 24 }}>
           <div style={{ fontSize: 13, color: "#6B7280", marginBottom: 16, textTransform: "uppercase", letterSpacing: 1 }}>O que está incluído</div>
@@ -474,7 +510,7 @@ export default function App() {
             <div style={{ background: "#161B22", border: "1px solid #21262D", borderRadius: 16, padding: 24, marginBottom: 16 }}>
               <div style={{ textAlign: "center", marginBottom: 20 }}>
                 <div style={{ fontSize: 13, color: "#6B7280", marginBottom: 4 }}>Total a pagar</div>
-                <div style={{ fontSize: 40, fontWeight: 800, color: "#00C896", letterSpacing: "-1px" }}>R$ 290,00</div>
+                <div style={{ fontSize: 40, fontWeight: 800, color: "#00C896", letterSpacing: "-1px" }}>R$ 120,00</div>
                 <div style={{ fontSize: 12, color: "#4B5563", marginTop: 4 }}>Declaração IRPF {formData.year} · 1 pessoa</div>
               </div>
               <div style={{ textAlign: "center", marginBottom: 20 }}>

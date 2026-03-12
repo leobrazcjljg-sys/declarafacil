@@ -193,13 +193,7 @@ export default function App() {
     );
   };
 
-  const Input = ({ label, value, onChange, type = "text", placeholder }) => (
-    <div style={{ marginBottom: 18 }}>
-      <label style={{ fontSize: 13, color: "#9CA3AF", display: "block", marginBottom: 6 }}>{label}</label>
-      <input type={type} placeholder={placeholder} value={value} onChange={onChange}
-        style={{ width: "100%", background: "#161B22", border: "1px solid #2D3748", color: "#F0EDE8", padding: "12px 14px", borderRadius: 10, fontSize: 15, outline: "none", boxSizing: "border-box" }} />
-    </div>
-  );
+
 
   // HOME
   if (screen === "home") return (
@@ -296,8 +290,17 @@ export default function App() {
       </div>
       <div style={{ padding: 28, maxWidth: 520, margin: "0 auto" }}>
         <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 28 }}>Digite seu CPF e e-mail cadastrados para acessar suas declarações.</p>
-        <Input label="CPF" value={loginData.cpf} onChange={e => setLoginData(p => ({ ...p, cpf: e.target.value }))} placeholder="000.000.000-00" />
-        <Input label="E-mail" type="email" value={loginData.email} onChange={e => setLoginData(p => ({ ...p, email: e.target.value }))} placeholder="seu@email.com" />
+        {[
+          ["CPF", "cpf", "text", "000.000.000-00"],
+          ["E-mail", "email", "email", "seu@email.com"],
+        ].map(([label, field, type, placeholder]) => (
+          <div key={field} style={{ marginBottom: 18 }}>
+            <label style={{ fontSize: 13, color: "#9CA3AF", display: "block", marginBottom: 6 }}>{label}</label>
+            <input type={type} placeholder={placeholder} value={loginData[field]}
+              onChange={e => setLoginData(p => ({ ...p, [field]: e.target.value }))}
+              style={{ width: "100%", background: "#161B22", border: "1px solid #2D3748", color: "#F0EDE8", padding: "12px 14px", borderRadius: 10, fontSize: 15, outline: "none", boxSizing: "border-box" }} />
+          </div>
+        ))}
         {erro && <div style={{ background: "#EF444420", border: "1px solid #EF444440", borderRadius: 10, padding: 12, marginBottom: 16, fontSize: 13, color: "#FCA5A5" }}>{erro}</div>}
         <button onClick={handleLogin} disabled={loading}
           style={{ width: "100%", background: "linear-gradient(135deg, #00C896, #00A37A)", border: "none", color: "#0D1117", padding: 16, borderRadius: 12, fontSize: 15, fontWeight: 800, cursor: "pointer", opacity: loading ? 0.7 : 1 }}>
@@ -485,10 +488,19 @@ export default function App() {
           <div>
             <h2 style={{ fontSize: 24, fontWeight: 800, marginBottom: 6, letterSpacing: "-0.5px" }}>Seus dados</h2>
             <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 28 }}>Preencha as informações básicas para iniciar</p>
-            <Input label="Nome completo" value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))} placeholder="Como no documento" />
-            <Input label="CPF" value={formData.cpf} onChange={e => setFormData(p => ({ ...p, cpf: e.target.value }))} placeholder="000.000.000-00" />
-            <Input label="E-mail" type="email" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))} placeholder="seu@email.com" />
-            <Input label="WhatsApp" type="tel" value={formData.phone} onChange={e => setFormData(p => ({ ...p, phone: e.target.value }))} placeholder="(00) 00000-0000" />
+            {[
+              ["Nome completo", "name", "text", "Como no documento"],
+              ["CPF", "cpf", "text", "000.000.000-00"],
+              ["E-mail", "email", "email", "seu@email.com"],
+              ["WhatsApp", "phone", "tel", "(00) 00000-0000"],
+            ].map(([label, field, type, placeholder]) => (
+              <div key={field} style={{ marginBottom: 18 }}>
+                <label style={{ fontSize: 13, color: "#9CA3AF", display: "block", marginBottom: 6 }}>{label}</label>
+                <input type={type} placeholder={placeholder} value={formData[field]}
+                  onChange={e => setFormData(p => ({ ...p, [field]: e.target.value }))}
+                  style={{ width: "100%", background: "#161B22", border: "1px solid #2D3748", color: "#F0EDE8", padding: "12px 14px", borderRadius: 10, fontSize: 15, outline: "none", boxSizing: "border-box" }} />
+              </div>
+            ))}
             <div style={{ marginBottom: 28 }}>
               <label style={{ fontSize: 13, color: "#9CA3AF", display: "block", marginBottom: 6 }}>Ano-base da declaração</label>
               <select value={formData.year} onChange={e => setFormData(p => ({ ...p, year: e.target.value }))}

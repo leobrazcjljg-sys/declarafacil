@@ -209,7 +209,7 @@ export default function App() {
       <div style={{ padding: "20px 28px", borderBottom: "1px solid #1E2732", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div>
           <div style={{ fontSize: 22, fontWeight: 700, color: "#00C896" }}>📊 DeclaraFácil</div>
-          <div style={{ fontSize: 11, color: "#6B7280", letterSpacing: 2, textTransform: "uppercase", marginTop: 2 }}>Imposto de Renda Simplificado</div>
+          <div style={{ fontSize: 11, color: "#6B7280", letterSpacing: 2, textTransform: "uppercase", marginTop: 2 }}>Imposto de Renda</div>
         </div>
         <div style={{ display: "flex", gap: 8 }}>
           <button onClick={() => setScreen("login")} style={{ background: "transparent", border: "1px solid #2D3748", color: "#9CA3AF", padding: "8px 14px", borderRadius: 8, cursor: "pointer", fontSize: 13 }}>Já sou cliente</button>
@@ -238,7 +238,7 @@ export default function App() {
             <div style={{ fontSize: 14, fontWeight: 800, color: "#F0EDE8", textTransform: "uppercase", letterSpacing: 1 }}>Quem deve declarar IR 2026?</div>
           </div>
           <div style={{ fontSize: 12, color: "#6B7280", marginBottom: 16 }}>Ano-base 2025 · Prazo estimado: 16 mar a 29 mai de 2026</div>
-          {[["💰","Rendimentos tributáveis acima de R$ 33.888,00","Salários, aposentadoria, pensões, aluguéis recebidos em 2025"],["🏦","Rendimentos isentos acima de R$ 200.000,00","FGTS, indenizações, dividendos ou lucros distribuídos"],["🏠","Patrimônio acima de R$ 800.000,00","Bens e direitos possuídos em 31/12/2025"],["📈","Operações na bolsa acima de R$ 40.000,00","Ações, fundos, day trade ou ganho líquido tributável"],["💸","Ganho de capital","Lucro na venda de imóveis, veículos ou outros bens"],["🌾","Atividade rural acima de R$ 153.199,50","Receita bruta anual ou compensação de prejuízos"]].map(([ic,title,desc]) => (
+          {[["💰","Rendimentos tributáveis acima de R$ 33.888,00 no ano","Salários, aposentadoria, pensões, aluguéis, etc. 👉 Equivale a aproximadamente R$ 2.606,77 por mês (13 meses). Se você recebeu próximo ou acima desse valor mensal, é obrigatório declarar."],["🏦","Rendimentos isentos acima de R$ 200.000,00","FGTS, indenizações, dividendos ou lucros distribuídos"],["🏠","Patrimônio acima de R$ 800.000,00","Bens e direitos possuídos em 31/12/2025"],["📈","Operações na bolsa acima de R$ 40.000,00","Ações, fundos, day trade ou ganho líquido tributável"],["💸","Ganho de capital","Lucro na venda de imóveis, veículos ou outros bens"],["🌾","Atividade rural acima de R$ 153.199,50","Receita bruta anual ou compensação de prejuízos"]].map(([ic,title,desc]) => (
             <div key={title} style={{ display: "flex", gap: 12, alignItems: "flex-start", marginBottom: 12, paddingBottom: 12, borderBottom: "1px solid #21262D" }}>
               <span style={{ fontSize: 18, flexShrink: 0 }}>{ic}</span>
               <div><div style={{ fontSize: 13, fontWeight: 700, color: "#F0EDE8", marginBottom: 2 }}>{title}</div><div style={{ fontSize: 12, color: "#9CA3AF", lineHeight: 1.5 }}>{desc}</div></div>

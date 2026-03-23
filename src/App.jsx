@@ -269,10 +269,10 @@ export default function App() {
       </div>
 
       {/* LRB Footer */}
-      <div style={{ borderTop: "1px solid #1E2732", padding: "16px 28px", display: "flex", justifyContent: "center", alignItems: "center", gap: 10, background: "#0D1117" }}>
-        <span style={{ fontSize: 11, color: "#374151" }}>Desenvolvido por</span>
-        <a href="https://www.lrbmultiservicesltda.com" target="_blank" style={{ display: "flex", alignItems: "center", gap: 8, textDecoration: "none" }}>
-          <img src={LRB_LOGO} alt="LRB Multi Services" style={{ height: 22, objectFit: "contain", filter: "brightness(0.9)" }} />
+      <div style={{ borderTop: "2px solid #E5700020", padding: "22px 28px", display: "flex", justifyContent: "center", alignItems: "center", gap: 14, background: "linear-gradient(135deg, #FFF7ED, #FFEDD5)" }}>
+        <span style={{ fontSize: 13, color: "#92400E", fontWeight: 600, letterSpacing: "0.5px" }}>Desenvolvido por</span>
+        <a href="https://www.lrbmultiservicesltda.com" target="_blank" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
+          <img src={LRB_LOGO} alt="LRB Multi Services" style={{ height: 52, objectFit: "contain", filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.15))" }} />
         </a>
       </div>
     </div>

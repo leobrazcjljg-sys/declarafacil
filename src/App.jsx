@@ -124,8 +124,9 @@ export default function App() {
   async function uploadArquivo(file, declaracaoId, remetente, nomeRemetente) {
     setUploading(true);
     try {
-      const ext = file.name.split(".").pop();
-      const path = `${declaracaoId}/${Date.now()}.${ext}`;
+      const ext = file.name.split(".").pop().toLowerCase();
+      const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+      const path = `${declaracaoId}/${Date.now()}_${safeName}`;
       const { error: upErr } = await supabase.storage.from(BUCKET).upload(path, file);
       if (upErr) throw upErr;
       const { data: urlData } = supabase.storage.from(BUCKET).getPublicUrl(path);
@@ -264,6 +265,14 @@ export default function App() {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* LRB Footer */}
+      <div style={{ borderTop: "1px solid #1E2732", padding: "16px 28px", display: "flex", justifyContent: "center", alignItems: "center", gap: 10, background: "#0D1117" }}>
+        <span style={{ fontSize: 11, color: "#374151" }}>Desenvolvido por</span>
+        <a href="https://www.lrbmultiservicesltda.com" target="_blank" style={{ display: "flex", alignItems: "center", gap: 8, textDecoration: "none" }}>
+          <img src={LRB_LOGO} alt="LRB Multi Services" style={{ height: 22, objectFit: "contain", filter: "brightness(0.9)" }} />
+        </a>
       </div>
     </div>
   );
